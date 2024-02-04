@@ -113,7 +113,7 @@ function App() {
                 id='grocery'
                 type='text'
                 className='grocery'
-                placeholder='e.g. eggs'
+                placeholder='e.g. apply for a job'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
