@@ -421,3 +421,31 @@ h4 .mb-1 {
 .something {
   text-decoration: line-through;
 }
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--clr-primary-8);
+  padding: 6.5px; /* Adjust as needed */
+  border-radius: 4px; /* Optional: Add some border-radius for a nicer look */
+  position: relative;
+}
+
+/* Change background when checked for checkboxes */
+input[type="checkbox"]:checked {
+  background-color: #90ee90; /* or any color you prefer */
+}
+
+input[type="checkbox"]:checked::before {
+  content: "✔"; /* You can use any content you prefer */
+  font-size: 0.5rem; /* Adjust as needed */
+  color: #fff; /* Color of the checkmark */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Prevent interaction with the pseudo-element */
+}
+input[type="checkbox"]::before {
+  content: ""; /* Empty content when unchecked */
+}

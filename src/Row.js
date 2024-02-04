@@ -1,14 +1,16 @@
 import React from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 const Row = ({
   id,
   title,
+  completed,
   dueDate,
   removeItem,
   editItem,
-  completed,
   setCompletedStatus,
 }) => {
+  console.log("this", completed);
   return (
     <tr>
       <td>
@@ -35,15 +37,16 @@ const Row = ({
           onClick={() => removeItem(id)}
         >
           {/* <FaTrash /> */}
-          <i className='fa-solid fa-trash'></i>
+          <FontAwesomeIcon icon={faTrash} />
+          {/* <i className='fa-solid fa-trash'></i> */}
         </button>
       </td>
       <td className='text-center'>
         <span>
           <input
             type='checkbox'
-            value={completed}
-            onChange={setCompletedStatus}
+            checked={completed}
+            onChange={() => setCompletedStatus(id)}
           />
         </span>
       </td>

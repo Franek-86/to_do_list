@@ -19,7 +19,6 @@ function App() {
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
   const [date, setDate] = useState(new Date());
-  const [completed, setCompleted] = useState(false);
 
   const testFunk = (date) => {
     const stringDate = date.toLocaleDateString();
@@ -35,8 +34,17 @@ function App() {
 
     return formattedDate;
   };
-  const setCompletedStatus = () => {
-    setCompleted(!completed);
+  const setCompletedStatus = (id) => {
+    console.log(id);
+    const test = list.map((item) => {
+      console.log(item);
+      if (item.id === id) {
+        return { ...item, completed: !item.completed };
+      }
+      return item;
+    });
+    console.log("test", test);
+    setList(test);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +75,7 @@ function App() {
         id: new Date().getTime().toString(),
         title: name,
         dueDate: testFunk(date),
-        completed: completed,
+        completed: false,
       };
 
       setList([...list, newItem]);
@@ -151,7 +159,6 @@ function App() {
             removeItem={removeItem}
             editItem={editItem}
             setCompletedStatus={setCompletedStatus}
-            completed={completed}
           />
           <button className='clear-btn' onClick={clearList}>
             clear items

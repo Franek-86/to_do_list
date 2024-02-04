@@ -2,13 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import Row from "./Row";
 
-const List = ({
-  items,
-  removeItem,
-  editItem,
-  setCompletedStatus,
-  completed,
-}) => {
+const List = ({ items, removeItem, editItem, setCompletedStatus }) => {
   return (
     <section className='section-center'>
       <div className='grocery-list'>
@@ -24,7 +18,7 @@ const List = ({
           </thead>
           <tbody>
             {items.map((item, index) => {
-              const { id, title, dueDate } = item;
+              const { id, title, dueDate, completed } = item;
               return (
                 <Row
                   removeItem={removeItem}
