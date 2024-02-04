@@ -2,7 +2,13 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import Row from "./Row";
 
-const List = ({ items, removeItem, editItem }) => {
+const List = ({
+  items,
+  removeItem,
+  editItem,
+  setCompletedStatus,
+  completed,
+}) => {
   return (
     <section className='section-center'>
       <div className='grocery-list'>
@@ -10,9 +16,10 @@ const List = ({ items, removeItem, editItem }) => {
           <thead>
             <tr>
               <th className='col-8'>To do</th>
-              <th className='col-2'>Due date</th>
-              <th>Edit</th>
-              <th>Remove</th>
+              <th className='col-1'>Due date</th>
+              <th className='col-1'>Edit</th>
+              <th className='col-1'>Remove</th>
+              <th className='col-1'>Done?</th>
             </tr>
           </thead>
           <tbody>
@@ -26,6 +33,8 @@ const List = ({ items, removeItem, editItem }) => {
                   title={title}
                   dueDate={dueDate}
                   key={index}
+                  setCompletedStatus={setCompletedStatus}
+                  completed={completed}
                 />
               );
             })}

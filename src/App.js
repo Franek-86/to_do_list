@@ -19,6 +19,7 @@ function App() {
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
   const [date, setDate] = useState(new Date());
+  const [completed, setCompleted] = useState(false);
 
   const testFunk = (date) => {
     const stringDate = date.toLocaleDateString();
@@ -31,20 +32,26 @@ function App() {
     month = month.padStart(2, "0");
 
     let formattedDate = `${day}/${month}/${year}`;
-    console.log("this2", formattedDate);
 
     return formattedDate;
   };
-
+  const setCompletedStatus = () => {
+    setCompleted(!completed);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name) {
-      showAlert(true, "danger", "please enter value");
+    if (!name || !date) {
+      showAlert(true, "danger", "please enter both values");
     } else if (name && isEditing) {
       setList(
         list.map((item) => {
           if (item.id === editID) {
-            return { ...item, title: name, dueDate: testFunk(date) };
+            return {
+              ...item,
+              title: name,
+              dueDate: testFunk(date),
+              completed: false,
+            };
           }
           return item;
         })
@@ -60,6 +67,7 @@ function App() {
         id: new Date().getTime().toString(),
         title: name,
         dueDate: testFunk(date),
+        completed: completed,
       };
 
       setList([...list, newItem]);
@@ -106,13 +114,13 @@ function App() {
           <h3>to do list</h3>
           <div className='form-container'>
             <div className='form-line'>
-              <label className='form-label' htmlFor='grocery'>
-                add item:
+              <label className='form-label' htmlFor='task'>
+                add task:
               </label>
               <input
-                id='grocery'
+                id='task'
                 type='text'
-                className='grocery'
+                className='grocery grocery-text'
                 placeholder='e.g. apply for a job'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -123,22 +131,28 @@ function App() {
                 due date:
               </label>
               <DatePicker
-                className='grocery'
+                className='grocery grocery-time'
                 id='date'
                 selected={date}
                 onChange={(date) => setDate(date)}
                 dateFormat='dd/MM/yyyy'
               />
             </div>
-            <button type='submit' className='submit-btn'>
-              {isEditing ? "edit" : "submit"}
-            </button>
           </div>
+          <button type='submit' className='submit-btn'>
+            {isEditing ? "edit" : "submit"}
+          </button>
         </form>
       </section>
       {list.length > 0 && (
         <>
-          <List items={list} removeItem={removeItem} editItem={editItem} />
+          <List
+            items={list}
+            removeItem={removeItem}
+            editItem={editItem}
+            setCompletedStatus={setCompletedStatus}
+            completed={completed}
+          />
           <button className='clear-btn' onClick={clearList}>
             clear items
           </button>
@@ -146,8 +160,15 @@ function App() {
       )}
       {list.length == 0 && (
         <section className='section-center'>
-          <h4 className='mb-1'>
-            Your list is currently empty, insert one or more tasks to see any
+          <h4
+            className='mb-1'
+            style={{
+              fontFamily: "'Open Sans', sans-serif",
+              textTransform: "none",
+              color: "hsl(205, 63%, 48%)",
+            }}
+          >
+            Your list is currently empty, insert one or more items to see any
             result
           </h4>
         </section>

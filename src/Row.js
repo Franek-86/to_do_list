@@ -1,20 +1,31 @@
 import React from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Row = ({ id, title, dueDate, removeItem, editItem }) => {
+const Row = ({
+  id,
+  title,
+  dueDate,
+  removeItem,
+  editItem,
+  completed,
+  setCompletedStatus,
+}) => {
   return (
     <tr>
       <td>
-        <span>{title}</span>
+        <span className={completed ? "something" : "somethingElse"}>
+          {title}
+        </span>
       </td>
       <td>
-        <span>{dueDate}</span>
+        <span className={completed ? "something" : "somethingElse"}>
+          {dueDate}
+        </span>
       </td>
       <td className='text-center'>
         <button type='button' className='edit-btn' onClick={() => editItem(id)}>
           {/* <FontAwesomeIcon icon='fa-solid fa-pen' /> */}
-          <FaEdit />
+          {/* <FaEdit /> */}
+          <i className='fa-solid fa-pen'></i>
         </button>
       </td>
       <td className='text-center'>
@@ -23,8 +34,18 @@ const Row = ({ id, title, dueDate, removeItem, editItem }) => {
           className='delete-btn'
           onClick={() => removeItem(id)}
         >
-          <FaTrash />
+          {/* <FaTrash /> */}
+          <i className='fa-solid fa-trash'></i>
         </button>
+      </td>
+      <td className='text-center'>
+        <span>
+          <input
+            type='checkbox'
+            value={completed}
+            onChange={setCompletedStatus}
+          />
+        </span>
       </td>
     </tr>
   );
