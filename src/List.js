@@ -17,9 +17,9 @@ const List = ({
             <tr>
               <th className='col-8'>To do</th>
               <th className='col-1'>Due date</th>
-              <th className='col-1'>Edit</th>
-              <th className='col-1'>Remove</th>
-              <th className='col-1'>Done?</th>
+              <th className='col-1 text-center'>Edit</th>
+              <th className='col-1 text-center'>Remove</th>
+              <th className='col-1 text-center'>Done</th>
             </tr>
           </thead>
           <tbody>
