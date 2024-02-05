@@ -1,5 +1,10 @@
-In order to run this file you need to open up the terminal and run npm start.
-If dependencies need to be installed before running nom start you need to run npm install.
+# How to run the project
 
-The app is responsive, on small screen you get the column with the list of task, remove btn and you can mark task as completed.
-On larger screen I added the optional "due date" option plus an edit button. I added the edit button because at the beginning I just mistakenly thought it was needed and then I felt too bad to take it off therefore I left it on larger screen.
+In order to run this project you need to open the terminal and run "npm install" first as I cancelled the "node_modules" before zipping the file.
+
+Once installed them you can start the project by running "npm start".
+
+# Project description
+
+The app is full responsive, on small screen the table is made of three columns: a list of tasks, a remove btn and a checkbox where you can mark the tasks as completed.
+On larger screen I added the optional "due date" option plus an edit button. I added the edit button because at the beginning I just mistakenly thought it was needed and then it felt too bad to take it off.
