@@ -360,7 +360,7 @@ To do List
   color: var(--clr-red-dark);
 }
 
-/* ---------------------------table------------------ */
+/* -----------------------------------table--------------------------------------------- */
 
 td span {
   color: var(--clr-grey-4);
@@ -394,15 +394,6 @@ tr {
   --bs-table-hover-bg: var(--clr-grey-9) !important;
 }
 
-.react-datepicker__current-month,
-.react-datepicker-time__header,
-.react-datepicker-year-header {
-  color: var(--clr-primary-3) !important;
-}
-
-.react-datepicker__day--selected {
-  background-color: var(--clr-primary-6) !important;
-}
 h4 .mb-1 {
   color: var(--clr-primary-6) !important;
 }
@@ -442,6 +433,7 @@ input[type="checkbox"]:checked::before {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+/* ------------- data picker --------------------- */
 
 .react-datepicker__header {
   background-color: var(--clr-grey-10) !important;
@@ -457,4 +449,13 @@ input[type="checkbox"]:checked::before {
 .react-datepicker__day,
 .react-datepicker__time-name {
   color: var(--clr-primary-2) !important;
+}
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  color: var(--clr-primary-3) !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--clr-primary-6) !important;
 }
