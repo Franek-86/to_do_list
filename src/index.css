@@ -267,6 +267,7 @@ To do List
 }
 
 .submit-btn {
+  color: var(--clr-primary-2);
   display: block;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
