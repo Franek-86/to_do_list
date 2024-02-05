@@ -19,6 +19,18 @@ function App() {
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
   const [date, setDate] = useState(new Date());
+  const [showLimitMessage, setShowLimitMessage] = useState(false);
+
+  const handleInputChange = (event) => {
+    const value = event.target.value.slice(0, 41); // Trim to max 41 characters
+    setName(value);
+
+    if (value.length === 41) {
+      setShowLimitMessage(true);
+    } else {
+      setShowLimitMessage(false);
+    }
+  };
 
   const testFunk = (date) => {
     const stringDate = date.toLocaleDateString();
@@ -118,6 +130,16 @@ function App() {
           {alert.show && (
             <Alert {...alert} removeAlert={showAlert} list={list} />
           )}
+          {showLimitMessage && (
+            <p className='alert alert-danger'>
+              Too many characters, keep them below 40
+            </p>
+          )}
+          {showLimitMessage &&
+            setTimeout(() => {
+              // Hide the message after 3 seconds
+              setShowLimitMessage(false);
+            }, 3000)}
 
           <h3>to do list</h3>
           <div className='form-container'>
@@ -128,10 +150,17 @@ function App() {
               <input
                 id='task'
                 type='text'
+                maxLength={41}
                 className='grocery grocery-text'
                 placeholder='e.g. apply for a job'
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  handleInputChange(e);
+                  setName(e.target.value);
+                }}
+                style={{
+                  border: showLimitMessage ? "2px solid red" : "1px solid #ccc",
+                }}
               />
             </div>
             <div className='form-line'>

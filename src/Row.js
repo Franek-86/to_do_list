@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 const Row = ({
   id,
   title,
@@ -14,16 +15,18 @@ const Row = ({
   return (
     <tr>
       <td>
-        <span className={completed ? "something" : "somethingElse"}>
+        <span
+          className={`custom-wrap ${completed ? "something" : "somethingElse"}`}
+        >
           {title}
         </span>
       </td>
-      <td>
-        <span className={completed ? "something" : "somethingElse"}>
+      <td className='d-none d-sm-table-cell'>
+        <span className={completed ? "something " : "somethingElse"}>
           {dueDate}
         </span>
       </td>
-      <td className='text-center'>
+      <td className='d-none d-sm-table-cell text-center'>
         <button type='button' className='edit-btn' onClick={() => editItem(id)}>
           {/* <FontAwesomeIcon icon='fa-solid fa-pen' /> */}
           {/* <FaEdit /> */}

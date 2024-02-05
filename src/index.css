@@ -210,7 +210,7 @@ To do List
   border-radius: var(--radius);
   border-color: transparent;
   font-size: 0.8rem;
-  color: var(--clr-grey-5);
+  color: var(--clr-grey-4);
 }
 
 .grocery-date {
@@ -238,15 +238,18 @@ To do List
   .grocery-text {
     width: 100%;
   }
-  td span {
-    font-size: 0.8rem !important;
-  }
+
   .edit-btn,
   .delete-btn {
     font-size: 0.8rem !important;
   }
   .clear-btn {
     font-size: 0.75rem !important;
+  }
+}
+@media screen and (max-width: 320px) {
+  .section-center {
+    width: 97%;
   }
 }
 
@@ -258,20 +261,11 @@ To do List
   font-size: 0.875rem;
   text-transform: capitalize;
   font-family: "Open Sans", sans-serif;
-  /* font-family: "Permanent Marker", cursive; */
 }
 .form-line {
   margin-bottom: 0.875rem;
 }
-/* @media screen and (max-width: 312px) {
-  .grocery {
-    font-size: 0.75rem;
-    margin-left: 0;
-  }
-  .form-label {
-    font-size: 0.825rem;
-  }
-} */
+
 .submit-btn {
   display: block;
   font-family: "Open Sans", sans-serif;
@@ -330,7 +324,6 @@ To do List
   transition: var(--transition);
   border: none;
   padding: 0 !important;
-  /* padding: 1rem; */
 }
 
 .edit-btn {
@@ -356,22 +349,22 @@ To do List
   background: transparent;
   border-color: transparent;
   color: var(--clr-red-light);
-  margin: 0 auto;
+  margin: 1.5rem auto 3rem auto;
   font-size: 0.875rem;
   letter-spacing: var(--spacing);
   cursor: pointer;
   transition: var(--transition);
-  margin-top: 1.25rem;
 }
 .clear-btn:hover {
   color: var(--clr-red-dark);
 }
 
-/* table */
+/* ---------------------------table------------------ */
 
 td span {
-  color: var(--clr-grey-3);
+  color: var(--clr-grey-4);
   font-size: 0.875rem;
+  font-size: 0.8rem !important;
 }
 th {
   color: var(--clr-primary-3) !important;
@@ -384,12 +377,8 @@ th {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) > * {
-  /* --bs-table-color-type: var(--bs-table-striped-color); */
   --bs-table-bg-type: var(--clr-grey-10);
 }
-/* --clr-primary-2: hsl(205, 77%, 27%);
-  --clr-primary-3: hsl(205, 72%, 37%);
-  --clr-primary-4: hsl(205, 63%, 48%); */
 
 tbody,
 td,
@@ -401,10 +390,8 @@ tr {
 }
 
 .table {
-  /* --bs-table-hover-bg: rgba(0, 0, 0, 0.075) !important; */
   --bs-table-hover-bg: var(--clr-grey-9) !important;
 }
-/* --bs-table-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.075); */
 
 .react-datepicker__current-month,
 .react-datepicker-time__header,
@@ -425,27 +412,48 @@ input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: var(--clr-primary-8);
-  padding: 6.5px; /* Adjust as needed */
-  border-radius: 4px; /* Optional: Add some border-radius for a nicer look */
+  background-color: var(--clr-primary-9);
+  padding: 5.5px;
+  border-radius: 4px;
   position: relative;
+  border: 1px solid var(--clr-grey-4);
+}
+input[type="checkbox"]:hover {
+  cursor: pointer;
 }
 
-/* Change background when checked for checkboxes */
 input[type="checkbox"]:checked {
-  background-color: #90ee90; /* or any color you prefer */
+  background-color: var(--clr-primary-6);
 }
 
 input[type="checkbox"]:checked::before {
-  content: "✔"; /* You can use any content you prefer */
-  font-size: 0.5rem; /* Adjust as needed */
-  color: #fff; /* Color of the checkmark */
+  content: "✔";
+  font-size: 0.5rem;
+  color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  pointer-events: none; /* Prevent interaction with the pseudo-element */
+  pointer-events: none;
 }
-input[type="checkbox"]::before {
-  content: ""; /* Empty content when unchecked */
+.custom-wrap {
+  display: block;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.react-datepicker__header {
+  background-color: var(--clr-grey-10) !important;
+}
+.react-datepicker {
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 0.8rem;
+  background-color: var(--clr-grey-8) !important;
+  color: var(--clr-primary-9) !important;
+  border: 1px solid var(--clr-grey-7) !important;
+}
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  color: var(--clr-primary-2) !important;
 }
